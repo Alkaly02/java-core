@@ -1,0 +1,14 @@
+package MainActivity;
+
+import models.*;
+
+public class MainActivity {
+	public static void main(String args[]) {
+		CompteBancaire alkalyCompteEpargne = new CompteEpargne(2000, "Alkaly", 0.5, 500);
+		
+		alkalyCompteEpargne.deposer(500);
+		alkalyCompteEpargne.retirer(2000);
+		
+		System.out.println(alkalyCompteEpargne.consulterSolde() + "F CFA mo nekk ci sa kalpe");
+	}
+}

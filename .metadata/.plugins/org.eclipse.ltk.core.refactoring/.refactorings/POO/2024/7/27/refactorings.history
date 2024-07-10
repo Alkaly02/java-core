@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;models.CompeBancaire.java&apos; to &apos;CompteBancaire.java&apos;&#x0A;- Original project: &apos;POO&apos;&#x0A;- Original element: &apos;models.CompeBancaire.java&apos;&#x0A;- Renamed element: &apos;models.CompteBancaire.java&apos;" description="Rename compilation unit &apos;CompeBancaire.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;models{CompeBancaire.java" name="CompteBancaire.java" references="false" stamp="1719861421875" version="1.0"/>
+</session>

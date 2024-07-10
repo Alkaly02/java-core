@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="models.User"/>
+    <fullyQualifiedTypeName name="models.ComputeAv"/>
+    <fullyQualifiedTypeName name="models.CompteBancaire"/>
+    <fullyQualifiedTypeName name="models.Livre"/>
+    <fullyQualifiedTypeName name="models.BibliothequeElement"/>
+    <fullyQualifiedTypeName name="java.lang.Package"/>
+    <fullyQualifiedTypeName name="models.Paiement"/>
+    <fullyQualifiedTypeName name="models.PaiementParCarte"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+</qualifiedTypeNameHistroy>

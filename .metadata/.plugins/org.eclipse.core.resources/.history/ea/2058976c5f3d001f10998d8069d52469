@@ -1,0 +1,15 @@
+package models;
+
+public abstract class Paiement {
+	private double montant;
+	public Paiement(double montant) {
+		this.montant = montant;
+	}
+	
+	public void setMontant(double montant) {
+		this.montant = montant;
+	}
+	public double getMontant() {
+		return this.montant;
+	}
+}

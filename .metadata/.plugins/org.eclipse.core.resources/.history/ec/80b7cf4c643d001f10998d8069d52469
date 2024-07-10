@@ -1,0 +1,36 @@
+package models;
+
+public class PaiementParCarte extends Paiement {
+	private String numeroCarte, dateExpiration;
+	
+	public PaiementParCarte(double montant, String numeroCarte, String dateExpiration) {
+		super(montant);
+		this.numeroCarte = numeroCarte;
+		this.dateExpiration = dateExpiration;
+	}
+	
+	public void setNumeroCarte(String numeroCarte) {
+		this.numeroCarte = numeroCarte;
+	}
+	public String getNumeroCarte(String numeroCarte) {
+		return this.numeroCarte;
+	}
+	
+	public void setDateExpiration(String dateExpiration) {
+		this.dateExpiration = dateExpiration;
+	}
+	
+	public String setDateExpiration() {
+		return this.dateExpiration;
+	}
+	
+	public void effectuerPaiement() {
+		System.out.println("Paiement effectue par carte");
+	}
+	
+	public void afficherDetails() {
+		super.afficherDetails();
+		System.out.println("Numero carte: "+ this.numeroCarte + "\n" + 
+							"Date d'expiration: " + this.dateExpiration);
+	}
+}

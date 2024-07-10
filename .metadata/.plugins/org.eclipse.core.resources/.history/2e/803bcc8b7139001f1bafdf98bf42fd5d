@@ -1,0 +1,29 @@
+package models;
+
+public class CompteEpargne extends CompteBancaire {
+	private double tauxInteret, seuilMinimum;
+	public CompteEpargne(double solde, String titulaire, double tauxInteret, double seuilMinimum) {
+		super(solde, titulaire);
+		this.tauxInteret = tauxInteret;
+		this.seuilMinimum = seuilMinimum;
+	}
+	
+	public void retirer(double montant) {
+		if(super.getSolde() < montant) {
+			System.out.println("Solde insuffisant");
+		}
+		else {
+//			Le montant restant apres retrait ne doit pas etre en dessous du seuil
+			if((super.getSolde() - montant) >= this.seuilMinimum) {
+				System.out.println("Montant retire avec succes");
+			}
+			else {
+				System.out.println("Votre compte necessite au minimum " + this.seuilMinimum);
+			}
+		}
+	}
+	
+	public double consulterSolde() {
+		return super.getSolde();
+	}
+}

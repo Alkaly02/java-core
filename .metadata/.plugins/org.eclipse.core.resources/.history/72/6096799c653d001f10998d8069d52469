@@ -1,0 +1,14 @@
+package main;
+
+import java.util.Date;
+
+import models.*;
+
+public class MainActivity {
+	static public void main(String[] args) {
+		PaiementParCarte paiement1 = new PaiementParCarte(2000, "2240 223 345", new Date());
+		
+		paiement1.effectuerPaiement();
+		paiement1.afficherDetails();
+	}
+}
