@@ -10,4 +10,5 @@
     <fullyQualifiedTypeName name="models.PaiementParCarte"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="employeeBook.EmployeeDetails"/>
 </qualifiedTypeNameHistroy>

@@ -13,15 +13,15 @@
 		<item key="DIALOG_X_ORIGIN" value="20"/>
 		<item key="DIALOG_Y_ORIGIN" value="20"/>
 		<item key="DIALOG_WIDTH" value="813"/>
-		<item key="DIALOG_HEIGHT" value="977"/>
-		<item key="DIALOG_FONT_NAME" value="1|Noto Sans|11.0|0|GTK|1|"/>
+		<item key="DIALOG_HEIGHT" value="900"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu Sans|11.0|0|GTK|1|"/>
 	</section>
 	<section name="NewPackageCreationWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="20"/>
 		<item key="DIALOG_Y_ORIGIN" value="20"/>
 		<item key="DIALOG_WIDTH" value="613"/>
 		<item key="DIALOG_HEIGHT" value="500"/>
-		<item key="DIALOG_FONT_NAME" value="1|Noto Sans|11.0|0|GTK|1|"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu Sans|11.0|0|GTK|1|"/>
 	</section>
 	<section name="NewPackageWizardPage">
 		<item key="create_package_info_java" value="false"/>
@@ -31,9 +31,9 @@
 	<section name="NewClassCreationWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="20"/>
 		<item key="DIALOG_Y_ORIGIN" value="20"/>
-		<item key="DIALOG_WIDTH" value="701"/>
-		<item key="DIALOG_HEIGHT" value="786"/>
-		<item key="DIALOG_FONT_NAME" value="1|Noto Sans|11.0|0|GTK|1|"/>
+		<item key="DIALOG_WIDTH" value="661"/>
+		<item key="DIALOG_HEIGHT" value="739"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu Sans|11.0|0|GTK|1|"/>
 	</section>
 	<section name="OptionalMessageDialog.hide.">
 		<item key="org.eclipse.jdt.ui.typecomment.deprecated" value="true"/>
