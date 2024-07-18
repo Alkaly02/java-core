@@ -2,6 +2,7 @@
 <dirs>
     <entry loc="/var/lib/snapd/snap/eclipse/95/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_21.0.3.v20240426-1530" stamp="1718967872000"/>
     <entry loc="/snap/eclipse/95/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_21.0.3.v20240426-1530" stamp="1718967872000"/>
+    <entry loc="/usr/lib/jvm/java-17-openjdk-amd64" stamp="1721128758831"/>
     <entry loc="/usr/lib/jvm/java-22-openjdk" stamp="1715691084178"/>
     <entry loc="/usr/lib/jvm/java-17-openjdk" stamp="1715691086471"/>
     <entry loc="/usr/lib/jvm/java-21-openjdk-amd64" stamp="1720732322003"/>

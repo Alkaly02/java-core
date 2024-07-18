@@ -22,6 +22,7 @@
             <entry path="null"/>
         </endorsedDirs>
     </libraryInfo>
+    <libraryInfo home="/usr/lib/jvm/java-17-openjdk-amd64" version="17.0.11"/>
     <libraryInfo home="/usr/lib/jvm/java-22-openjdk" version="22"/>
     <libraryInfo home="/usr/lib/jvm/java-17-openjdk" version="17.0.11"/>
     <libraryInfo home="/usr/lib/jvm/java-21-openjdk-amd64" version="21.0.3"/>

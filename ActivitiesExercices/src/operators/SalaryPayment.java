@@ -3,9 +3,9 @@ package operators;
 import java.util.Scanner;
 
 public class SalaryPayment {
-	private final double hra_percent = 0.5;
-	private final double specialAllowance_percent = 0.75;
-	private final double pfDeduction_percent = 0.12;
+	private final double HRA = 0.5;
+	private final double SPECIAL_ALLOWANCE = 0.75;
+	private final double PFD_DEDUCTION = 0.12;
 	
 	private long basicSalary;
 	private double hra, specialAllowance, pfDeduction, netPayableSalary;
@@ -45,12 +45,9 @@ public class SalaryPayment {
 		return this.netPayableSalary;
 	}
 	
-	public void askBasicSalary() {
-		Scanner scn = new Scanner(System.in);
+	public void askBasicSalary(Scanner scn) {
 		System.out.print("What is your basic salary? : ");
 		long basicSalary = scn.nextLong();
-		scn.close();
-		
 		this.setBasicSalary(basicSalary);
 		
 //		Calcutate Net Payable Salary after getting the basic salary
@@ -58,15 +55,15 @@ public class SalaryPayment {
 	}
 	
 	private void calculateHraComponent() {
-		this.setHra(this.hra_percent * this.getBasicSalary());
+		this.setHra(this.HRA * this.getBasicSalary());
 	}
 	
 	private void calculateSpecialAllowanceComponent() {
-		this.setSpecialAllowance(this.specialAllowance_percent * this.getBasicSalary());
+		this.setSpecialAllowance(this.SPECIAL_ALLOWANCE * this.getBasicSalary());
 	}
 	
 	private void calculatePfDeductionComponent() {
-		this.setPfDeduction(this.pfDeduction_percent * this.getBasicSalary());
+		this.setPfDeduction(this.PFD_DEDUCTION * this.getBasicSalary());
 	}
 	
 	private void calculateNetPayableSalary() {
