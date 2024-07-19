@@ -1,7 +1,0 @@
-package main;
-
-public class MainActivity {
-	static public void main(String[] args) {
-		
-	}
-}
