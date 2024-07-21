@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/models/source.txt</name>
-			<type>1</type>
-			<location>/home/alkaly/eclipse-workspace/java-core/FileHandler/src/models/FIleHandler.java</location>
-		</link>
-	</linkedResources>
 </projectDescription>
