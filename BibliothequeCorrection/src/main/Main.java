@@ -12,20 +12,15 @@ public class Main {
 		Magazine magazine1 = new Magazine("NIIT MAG", "NIIT", 2024, "L2/GL", "Semestrielle");
 		Magazine magazine2 = new Magazine("LKA MAG", "NIIT", 2024, "L2/GL", "Semestrielle");
 		
-		ArrayList<Livre> livres = new ArrayList<Livre>();
-		livres.add(livre1);
-		livres.add(livre2);
+		ArrayList<BibliothequeElement> bibliotheques = new ArrayList<BibliothequeElement>();
 		
-		ArrayList<Magazine> magazines = new ArrayList<Magazine>();
-		magazines.add(magazine1);
-		magazines.add(magazine2);
+		bibliotheques.add(livre1);
+		bibliotheques.add(livre2);
+		bibliotheques.add(magazine1);
+		bibliotheques.add(magazine2);
 		
-		for(Livre livre:livres) {
-			livre.afficherDetails();
-		}
-		
-		for(Magazine magazine:magazines) {
-			magazine.afficherDetails();
+		for(BibliothequeElement item : bibliotheques) {
+			item.afficherDetails();
 		}
 		
 		System.out.println("Le nombre de livre cree est: " + Livre.nombreDeLivreCrees);
