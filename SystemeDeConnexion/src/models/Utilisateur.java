@@ -5,9 +5,9 @@ import exceptions.*;
 public class Utilisateur {
 	private String nomUtilisateur, motDePasse;
 	
-	public Utilisateur(String nomUtilisateur, String motDePasse) {
-		this.nomUtilisateur = nomUtilisateur;
-		this.motDePasse = motDePasse;
+	public Utilisateur(String nom, String mdp) {
+		this.nomUtilisateur = nom;
+		this.motDePasse = mdp;
 	}
 	
 	public void setNomUtilisateur(String nom) {
@@ -29,10 +29,10 @@ public class Utilisateur {
 			throw new NomUtilisateurInvalideException();
 		}
 		else if(this.getMotDePasse() != motDePasse) {
-			throw new MotDePasseInvalideException("Mot de passe incorrecte");
+			throw new MotDePasseInvalideException("Mot de passe incorrect");
 		}
 		else {
-			System.out.println("Utilisateur connecte avec succes");
+			System.out.println("Connexion reussie");
 		}
 	}
 }

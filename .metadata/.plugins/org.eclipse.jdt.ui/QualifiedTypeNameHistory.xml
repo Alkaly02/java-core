@@ -22,7 +22,11 @@
     <fullyQualifiedTypeName name="java.nio.file.Paths"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
     <fullyQualifiedTypeName name="java.net.URISyntaxException"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="exceptions.NombreHeuresInvalideException"/>
     <fullyQualifiedTypeName name="models.Employe"/>
+    <fullyQualifiedTypeName name="models.Utilisateur"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="exceptions.NomUtilisateurInvalideException"/>
+    <fullyQualifiedTypeName name="exceptions.MotDePasseInvalideException"/>
+    <fullyQualifiedTypeName name="exceptions.NombreHeuresInvalideException"/>
+    <fullyQualifiedTypeName name="exceptions.SalaireHoraireInvalideException"/>
 </qualifiedTypeNameHistroy>
