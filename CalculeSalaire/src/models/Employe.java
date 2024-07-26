@@ -25,24 +25,12 @@ public class Employe {
 		return this.salaireHoraire;
 	}
 	
-	public double calculerSalaire(Integer nbrHeuresTravaillees) {
+	public double calculerSalaire(Integer nbrHeuresTravaillees) throws NombreHeuresInvalideException, SalaireHoraireInvalideException {
 		if(nbrHeuresTravaillees <= 0) {
-			try {
-				throw new NombreHeuresInvalideException();
-			}
-			catch(NombreHeuresInvalideException e) {
-				System.out.println(e.getMessage());
-			}
-			System.exit(0);
+			throw new NombreHeuresInvalideException();
 		}
 		else if(this.getSalaireHoraire() <= 0) {
-			try {
-				throw new SalaireHoraireInvalideException("Salaire invalide");
-			}
-			catch(SalaireHoraireInvalideException e) {
-				System.out.println(e.getMessage());
-			}
-			System.exit(0);
+			throw new SalaireHoraireInvalideException("Salaire invalide");
 		}
 		return this.getSalaireHoraire() * nbrHeuresTravaillees;
 	}

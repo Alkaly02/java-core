@@ -1,9 +1,8 @@
 package exceptions;
 
 public class SalaireHoraireInvalideException extends Exception {
-	private String msg;
 	public SalaireHoraireInvalideException(String msg) {
-		this.msg = msg;
+		super(msg);
 	}
 	
 	public String getMessage() {
