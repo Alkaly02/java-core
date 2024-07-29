@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 public class MyFrame extends JFrame{
 //	JFrame is GUI window to add components to
-	MyFrame(){
+	public MyFrame(){
 		this.setTitle("Image trester");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);

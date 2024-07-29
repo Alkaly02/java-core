@@ -29,4 +29,8 @@
     <fullyQualifiedTypeName name="exceptions.MotDePasseInvalideException"/>
     <fullyQualifiedTypeName name="exceptions.NombreHeuresInvalideException"/>
     <fullyQualifiedTypeName name="exceptions.SalaireHoraireInvalideException"/>
+    <fullyQualifiedTypeName name="models.MyFrame"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
 </qualifiedTypeNameHistroy>
