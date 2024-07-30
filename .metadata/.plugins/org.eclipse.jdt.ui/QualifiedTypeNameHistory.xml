@@ -33,4 +33,7 @@
     <fullyQualifiedTypeName name="javax.swing.JLabel"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+    <fullyQualifiedTypeName name="models.SecondDegre"/>
+    <fullyQualifiedTypeName name="exceptions.CoefficientInvalideException"/>
+    <fullyQualifiedTypeName name="exceptions.DiscriminantNegatifException"/>
 </qualifiedTypeNameHistroy>
