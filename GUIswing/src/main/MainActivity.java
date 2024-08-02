@@ -11,7 +11,7 @@ import javax.swing.border.Border;
 
 public class MainActivity {
 	public static void main(String[] args) {
-//		MyFrame frame2 = new MyFrame();
+		MyFrame frame2 = new MyFrame();
 		ImageIcon image = new ImageIcon("code.jpeg");
 		Border border = BorderFactory.createLineBorder(Color.green, 3);
 //		JLabel is u GUI component to display area for a string of text, an image, or both
@@ -36,5 +36,6 @@ public class MainActivity {
 		frame.setLayout(null);
 		frame.setVisible(true);
 		frame.add(label);
+		System.out.print(Math.ceil(5.3));
 	}
 }
