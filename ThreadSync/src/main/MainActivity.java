@@ -18,8 +18,9 @@ public class MainActivity {
 		
 		try {
 			t1.join();
+			t2.join();
 		}catch(InterruptedException ie) {
-			
+			ie.printStackTrace();
 		}
 		
 		System.out.println("Counter thread : "+ count1.getCount());
