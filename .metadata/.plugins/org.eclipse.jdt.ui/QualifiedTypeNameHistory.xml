@@ -47,6 +47,6 @@
     <fullyQualifiedTypeName name="main.MainActivity"/>
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
     <fullyQualifiedTypeName name="threads.AppThread"/>
-    <fullyQualifiedTypeName name="models.CounterThread"/>
     <fullyQualifiedTypeName name="java.lang.InterruptedException"/>
+    <fullyQualifiedTypeName name="models.CounterThread"/>
 </qualifiedTypeNameHistroy>
