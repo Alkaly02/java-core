@@ -54,8 +54,9 @@ public class MainActivity {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Producer obj1 = new Producer(new SharedResource());
-		Consumer obj2 = new Consumer(new SharedResource());
+		SharedResource resource = new SharedResource();
+		Producer obj1 = new Producer(resource);
+		Consumer obj2 = new Consumer(resource);
 		
 		Thread t1 = new Thread(obj1);
 		Thread t2 = new Thread(obj2);
