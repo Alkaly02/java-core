@@ -1,0 +1,7 @@
+Objectif : 
+Copier le contenu d'un fichier source 
+vers un fichier de destination 
+en utilisant
+FileInputStream 
+et
+FileOutputStream.
