@@ -70,15 +70,8 @@ public class MainActivity {
 				Student student = new Student(nom, prenom, Integer.parseInt(age), numero);
 				
 				student.saveStudents();			
-				
-//				students.add(student);
-				
-				
 			}
 		});
-		
-		
-		
 		
 		frame.add(table);
 		frame.add(panel, BorderLayout.NORTH);
