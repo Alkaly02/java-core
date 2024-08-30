@@ -2,6 +2,14 @@ package main;
 
 import java.sql.*;
 
+/*
+
+For this code to work, you need to have the MySql connector driver, you can find it here: https://drive.google.com/file/d/1IME-QlI57XuzMhsqzhouH5iYyPApGMwR/view
+
+You're welcome !!!!
+
+*/
+
 class Student{
 	private Statement stmt;
 	
