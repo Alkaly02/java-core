@@ -7,10 +7,15 @@ import java.sql.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
+
+import models.Student;
 
 class StudentFrame extends JFrame{
 	public JTextField nomTextField;
 	public JTextField ageTextField;
+	JTable studentsTable;
+	DefaultTableModel tableModel;
 	
 	@Override
 	public Insets getInsets() {
@@ -18,7 +23,7 @@ class StudentFrame extends JFrame{
 	}
 	
 	public StudentFrame() {
-		Students.connectDb();
+		Student.connectDb();
 		setTitle("Gestion d'eleves");
 		setSize(600, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,7 +47,15 @@ class StudentFrame extends JFrame{
 		JButton submitBtn = new JButton("Ajouter");
 		formPanel.add(submitBtn);
 		
+		tableModel = new DefaultTableModel(new Object[] {"Nom", "Age"}, 0);
+		studentsTable = new JTable(tableModel);
+		
+		add(new JScrollPane(studentsTable));
+		
 		submitBtn.addActionListener(new SubmitActionListener());
+		
+//		afficher la liste des eleves au chargement
+		this.loadStudentsTable();
 		
 		add(formPanel, BorderLayout.NORTH);
 		setVisible(true);
@@ -62,6 +75,22 @@ class StudentFrame extends JFrame{
 		return this.ageTextField;
 	}
 	
+//	Recuperer les etudiants et les lister sur une table
+	public void loadStudentsTable() {
+//		vider le tableau avant de l'afficher a nouveau
+		tableModel.setRowCount(0);
+		try {
+			ResultSet rs = Student.getStudents();
+			while(rs.next()) {
+				System.out.println(rs.getString("name"));
+				tableModel.addRow(new Object[] {rs.getString("name"), rs.getInt("age")});;
+			}
+		}catch(SQLException ex) {
+			System.out.println("Une erreur est survenue lors de la recuperation des students");
+			ex.printStackTrace();
+		}
+	}
+	
 	private class SubmitActionListener implements ActionListener{
 //		private static final long serialVersionUID = 1L;
 		public void actionPerformed(ActionEvent e) {
@@ -72,47 +101,13 @@ class StudentFrame extends JFrame{
 				JOptionPane.showMessageDialog(StudentFrame.this, "Les champs ne doivent pas etre vides", "Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}else {
-				Students.createUser(nom, Integer.parseInt(age));
+				Student.createUser(nom, Integer.parseInt(age));
+				loadStudentsTable();
 			}
 		}
 	}
 }
 
-class Students{
-	public static Connection con;
-	private static void loadDriver() {
-		try {
-			Class.forName("com.mySql.cj.jdbc.Driver");
-		}catch(ClassNotFoundException ex) {
-			System.out.println("Une erreur est survenue lors du chargement du driver");
-			ex.printStackTrace();
-		}
-	}
-	public static void connectDb() {
-		loadDriver();
-		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "");
-		}catch(SQLException ex) {
-			System.out.println("Une erreur est survenue lors de la connexion a la base de donnees");
-			ex.printStackTrace();
-		}
-	}
-	
-	public static void createUser(String nom, int age) {
-		String query = "INSERT INTO students (name, age) VALUES (?, ?)";
-		try {
-			PreparedStatement preparedStatement = con.prepareStatement(query);
-			preparedStatement.setString(1, nom);
-			preparedStatement.setInt(2, age);
-			preparedStatement.executeUpdate();
-			preparedStatement.close();
-			System.out.println(nom + " a ete ajoute avec succes");
-		}catch(SQLException ex) {
-			System.out.println("Une erreur est survenue lors de la creation de " + nom);
-			ex.printStackTrace();
-		}
-	}
-}
 
 public class MainActivity {
 
