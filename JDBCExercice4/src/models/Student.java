@@ -66,4 +66,27 @@ public class Student{
 		ResultSet rs = stmt.executeQuery();
 		return rs;
 	}
+//	Rechercher un user
+	public static ResultSet searchStudent(String name) throws SQLException {
+		String query = "SELECT * FROM students WHERE name LIKE ?";
+		PreparedStatement prepStmt = con.prepareStatement(query);
+		prepStmt.setString(1, "%" + name +"%");
+		ResultSet rs = prepStmt.executeQuery();
+		return rs;
+	}
+//	Mettre a jour l'age d'un etudiant
+	public static void updateStudent(String name, int age) {
+		String query = "UPDATE students SET age=? WHERE name=?";
+		try {
+			PreparedStatement prepStmt = con.prepareStatement(query);
+			prepStmt.setInt(1, age);
+			prepStmt.setString(2, name);
+			prepStmt.execute();
+		}catch(SQLException ex) {
+			System.out.println("Une erreur est survenue lors de la mise a jour");
+			ex.printStackTrace();
+		}
+	}
+	
+	
 }
