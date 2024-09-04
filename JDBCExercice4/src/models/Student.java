@@ -82,6 +82,7 @@ public class Student{
 			prepStmt.setInt(1, age);
 			prepStmt.setString(2, name);
 			prepStmt.execute();
+			prepStmt.close();
 		}catch(SQLException ex) {
 			System.out.println("Une erreur est survenue lors de la mise a jour");
 			ex.printStackTrace();
