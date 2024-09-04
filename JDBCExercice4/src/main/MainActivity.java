@@ -23,12 +23,14 @@ class StudentFrame extends JFrame{
 	}
 	
 	public StudentFrame() {
+//		Connexion a la base de donnees
 		Student.connectDb();
+//		Demarrage du frame
 		setTitle("Gestion d'eleves");
-		setSize(600, 600);
+		setSize(800, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel formPanel = new JPanel(new GridLayout(2, 4));
+		JPanel formPanel = new JPanel(new GridLayout(4, 6));
 		
 //		Border padding = Bord
 		
@@ -47,12 +49,20 @@ class StudentFrame extends JFrame{
 		JButton submitBtn = new JButton("Ajouter");
 		formPanel.add(submitBtn);
 		
+		JButton searchBtn = new JButton("Rechercher");
+		formPanel.add(searchBtn);
+		
+		JButton updateBtn = new JButton("Mettre a jour");
+		formPanel.add(updateBtn);
+		
 		tableModel = new DefaultTableModel(new Object[] {"Nom", "Age"}, 0);
 		studentsTable = new JTable(tableModel);
 		
 		add(new JScrollPane(studentsTable));
 		
 		submitBtn.addActionListener(new SubmitActionListener());
+		searchBtn.addActionListener(new SearchStudentActionListener());
+		updateBtn.addActionListener(new UpdateStudentActionListener());
 		
 //		afficher la liste des eleves au chargement
 		this.loadStudentsTable();
@@ -81,29 +91,72 @@ class StudentFrame extends JFrame{
 		tableModel.setRowCount(0);
 		try {
 			ResultSet rs = Student.getStudents();
-			while(rs.next()) {
-				System.out.println(rs.getString("name"));
-				tableModel.addRow(new Object[] {rs.getString("name"), rs.getInt("age")});;
-			}
+			mapDataToTable(rs);
 		}catch(SQLException ex) {
 			System.out.println("Une erreur est survenue lors de la recuperation des students");
 			ex.printStackTrace();
 		}
 	}
+//	
+	public void mapDataToTable(ResultSet rs) {
+		tableModel.setRowCount(0);
+		try {
+			while(rs.next()) {
+				tableModel.addRow(new Object[] {rs.getString("name"), rs.getInt("age")});;
+			}
+		}catch(SQLException ex) {
+			System.out.println("Une erreur est survenue lors de la recuperation des colonnes");
+			ex.printStackTrace();
+		}
+	}
 	
 	private class SubmitActionListener implements ActionListener{
-//		private static final long serialVersionUID = 1L;
 		public void actionPerformed(ActionEvent e) {
 			String nom = nomTextField.getText();
 			String age = ageTextField.getText();
 			
 			if(nom.isEmpty() || age.isEmpty()) {
-				JOptionPane.showMessageDialog(StudentFrame.this, "Les champs ne doivent pas etre vides", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(StudentFrame.this, "Les champs ne doivent pas etre vides", "Erreur", JOptionPane.ERROR_MESSAGE);
 				return;
 			}else {
 				Student.createUser(nom, Integer.parseInt(age));
 				loadStudentsTable();
+				nomTextField.setText("");
+				ageTextField.setText("");
 			}
+		}
+	}
+	
+	private class SearchStudentActionListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String nameToSearch = nomTextField.getText();
+			
+			if(nameToSearch.isEmpty()) {
+				JOptionPane.showMessageDialog(rootPane, "Veuillez remplir le champ name", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			try {
+				ResultSet rs = Student.searchStudent(nameToSearch);
+				mapDataToTable(rs);
+			}catch(SQLException ex) {
+				System.out.println("Une erreur est survenue lors de la recherche de " + nameToSearch);
+				ex.printStackTrace();
+			}
+		}
+	}
+	
+	private class UpdateStudentActionListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String name = nomTextField.getText();
+			String age = ageTextField.getText();
+			if(name.isEmpty() || age.isEmpty()) {
+				JOptionPane.showMessageDialog(rootPane, "Le name et l'age sont obligatioire", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			Student.updateStudent(name, Integer.parseInt(age));
+			loadStudentsTable();
 		}
 	}
 }
