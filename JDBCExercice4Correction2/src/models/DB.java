@@ -34,7 +34,6 @@ public class DB {
 	
 	private void loadDriver() {
 		try {
-			System.out.println("Driver loaded");
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			System.out.println("Driver loaded");
 		}catch(ClassNotFoundException cex) {
@@ -49,9 +48,10 @@ public class DB {
 //			protocol:sub-protocol:sub-name
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/ecole", "root", "");
 			System.out.println("Connexion a la base de donnees reussie");
+			this.setCon(con);
 			this.setStmt(con.createStatement());
 		}catch(SQLException sqlExc) {
-			System.out.println("Une erreur est survenue lors du chargement du driver");
+			System.out.println("Une erreur est survenue lors de la connexion a la base de donnees");
 			sqlExc.printStackTrace();
 		}
 	}
