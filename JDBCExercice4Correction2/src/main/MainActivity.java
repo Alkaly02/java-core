@@ -43,7 +43,7 @@ public class MainActivity {
 		studentQueries.add("INSERT INTO students (name, age) VALUES ('Tonux mentor master', 53)");
 		studentQueries.add("INSERT INTO students (name, age) VALUES ('Medoune JavaMan', 32)");
 		studentQueries.add("INSERT INTO students (name, age) VALUES ('Optimus Debugger, the department', 15)");
-//		this should throw an rollback and the transaction will rollback
+//		this should throw an error and the transaction will rollback
 		studentQueries.add("INSERT INTO students (name, age) VALES ('Mimistic', 40)");
 		studentModel.insertStudentsTransaction(studentQueries);
 
