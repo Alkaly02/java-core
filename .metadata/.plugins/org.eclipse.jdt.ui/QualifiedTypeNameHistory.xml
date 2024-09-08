@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="exceptions.SalaireHoraireInvalideException"/>
     <fullyQualifiedTypeName name="models.MyFrame"/>
     <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
     <fullyQualifiedTypeName name="models.SecondDegre"/>
@@ -39,7 +38,6 @@
     <fullyQualifiedTypeName name="java.io.EOFException"/>
     <fullyQualifiedTypeName name="models.StudentFrame"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="javax.swing.JTextField"/>
     <fullyQualifiedTypeName name="java.awt.GridLayout"/>
@@ -49,15 +47,17 @@
     <fullyQualifiedTypeName name="java.awt.Insets"/>
     <fullyQualifiedTypeName name="main.StudentFrame.SubmitActionListener"/>
     <fullyQualifiedTypeName name="main.StudentFrame"/>
-    <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
-    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
     <fullyQualifiedTypeName name="models.Student"/>
     <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
     <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
-    <fullyQualifiedTypeName name="java.sql.Statement"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
-    <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="models.StudentModel"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
 </qualifiedTypeNameHistroy>
