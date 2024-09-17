@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.swing.JButton"/>
-    <fullyQualifiedTypeName name="threads.AppThread"/>
-    <fullyQualifiedTypeName name="java.lang.InterruptedException"/>
-    <fullyQualifiedTypeName name="models.CounterThread"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
-    <fullyQualifiedTypeName name="java.io.BufferedInputStream"/>
-    <fullyQualifiedTypeName name="java.io.BufferedOutputStream"/>
-    <fullyQualifiedTypeName name="main.CopyImageWithBuffer"/>
-    <fullyQualifiedTypeName name="main.SimpleCopyImage"/>
-    <fullyQualifiedTypeName name="main.BufferedInputStreamDemo"/>
-    <fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="javax.swing.JTable"/>
     <fullyQualifiedTypeName name="main.MainActivity"/>
@@ -24,7 +12,6 @@
     <fullyQualifiedTypeName name="java.io.FileInputStream"/>
     <fullyQualifiedTypeName name="java.io.EOFException"/>
     <fullyQualifiedTypeName name="models.StudentFrame"/>
-    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="javax.swing.JTextField"/>
     <fullyQualifiedTypeName name="java.awt.GridLayout"/>
     <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
@@ -35,7 +22,6 @@
     <fullyQualifiedTypeName name="main.StudentFrame"/>
     <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
     <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
@@ -60,4 +46,18 @@
     <fullyQualifiedTypeName name="java.net.DatagramPacket"/>
     <fullyQualifiedTypeName name="java.net.ServerSocket"/>
     <fullyQualifiedTypeName name="java.net.Socket"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="src.GamePanel"/>
+    <fullyQualifiedTypeName name="java.awt.Graphics"/>
+    <fullyQualifiedTypeName name="java.awt.event.KeyAdapter"/>
+    <fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="java.awt.Dimension"/>
+    <fullyQualifiedTypeName name="src.GamePanel.MyKeyAdapter"/>
+    <fullyQualifiedTypeName name="java.util.Timer"/>
+    <fullyQualifiedTypeName name="javax.swing.Timer"/>
+    <fullyQualifiedTypeName name="src.SnakeGame"/>
+    <fullyQualifiedTypeName name="java.awt.Color"/>
 </qualifiedTypeNameHistroy>
