@@ -1,0 +1,42 @@
+Exercice 1 : Communication UDP
+Objectif :
+Créer une application client-serveur simple utilisant le protocole UDP pour envoyer et recevoir des
+messages.
+Instructions :
+1. Créez une application serveur qui :
+oÉcoute sur un port spécifique (par exemple, 9876).
+oAttend un message de la part d'un client.
+oAffiche le message reçu dans la console.
+oEnvoie un accusé de réception (acknowledgement) au client après réception du
+message.
+2. Créez une application cliente qui :
+oEnvoie un message texte au serveur via UDP.
+oAttend l'accusé de réception et l'affiche dans la console.
+Exercice 2: Transfert de Fichier avec TCP/IP
+Objectif :
+Créer une application client-serveur pour le transfert de fichiers en utilisant TCP/IP.
+Instructions :
+1. Créez une application serveur qui :
+oÉcoute sur un port spécifique (par exemple, 6789).
+oAttend qu'un client se connecte.
+oReçoit un fichier envoyé par le client.
+oEnregistre le fichier reçu sur le disque.
+2. Créez une application cliente qui :
+oSe connecte au serveur via TCP.
+oLit un fichier depuis le disque local.
+oEnvoie le fichier au serveur.Exercice 3: Chat Multi-utilisateurs avec Enregistrement dans une Base de Données via JDBC
+Objectif :
+Créer une application de chat multi-utilisateurs utilisant le protocole TCP/IP, où le serveur enregistre
+tous les messages envoyés par les utilisateurs dans une base de données en utilisant JDBC.
+Instructions :
+1. Serveur :
+oLe serveur doit écouter les connexions des clients sur un port spécifique (par exemple,
+8888).
+oLorsqu'un client envoie un message, le serveur diffuse ce message à tous les autres
+clients connectés.
+oLe serveur enregistre chaque message dans une base de données (avec le nom de
+l'utilisateur et l'horodatage du message) en utilisant JDBC.
+2. Client :
+oLe client doit se connecter au serveur via TCP.
+oLe client peut envoyer et recevoir des messages.
+oChaque message envoyé est stocké dans la base de données par le serveur.
