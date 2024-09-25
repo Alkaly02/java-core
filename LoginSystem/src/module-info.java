@@ -4,6 +4,6 @@
 /**
  * 
  */
-module KnowledgeOnWeb {
+module LoginSystem {
 	requires java.desktop;
 }
