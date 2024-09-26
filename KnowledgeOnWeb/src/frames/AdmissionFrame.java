@@ -58,16 +58,16 @@ public class AdmissionFrame implements ActionListener {
 	JTextField codePaysDomicileField = new JTextField();
 	JLabel indicatifRegionalDomicileLabel = new JLabel("Indicatif regional");
 	JTextField indicatifRegionalDomicileField = new JTextField();
-	JLabel numeroTelephoneDomicileLabel = new JLabel("Code pays");
-	JTextField telephoneDomicileField = new JTextField();
+	JLabel numeroTelephoneDomicileLabel = new JLabel("Numero telephone");
+	JTextField numeroTelephoneDomicileField = new JTextField();
 	
 	JLabel telephoneBureauLabel = new JLabel("Telephone(Bureau)");
 	JLabel codePaysBureauLabel = new JLabel("Code pays");
 	JTextField codePaysBureauField = new JTextField();
 	JLabel indicatifRegionalBureauLabel = new JLabel("Indicatif regional");
 	JTextField indicatifRegionalBureauField = new JTextField();
-	JLabel numeroTelephoneBureauLabel = new JLabel("Code pays");
-	JTextField telephoneBureauField = new JTextField();
+	JLabel numeroTelephoneBureauLabel = new JLabel("Numero telephone");
+	JTextField numeroTelephoneBureauField = new JTextField();
 	
 	JLabel adresseEmailLabel = new JLabel("Adresse E-mail :");
 	JTextField adresseEmailField = new JTextField();
@@ -124,6 +124,25 @@ public class AdmissionFrame implements ActionListener {
 		paysLabel.setBounds(20, 520, LABEL_WIDTH, INPUT_HEIGHT);
 		paysField.setBounds(INPUT_START_X, 520, INPUT_WIDTH, INPUT_HEIGHT);
 		
+		telephoneDomicileLabel.setBounds(20, 580, INPUT_WIDTH, INPUT_HEIGHT);	
+		telephoneDomicileLabel.setFont(new Font(null, Font.BOLD, 25));
+		codePaysDomicileLabel.setBounds(20, 640, LABEL_WIDTH, INPUT_HEIGHT);
+		codePaysDomicileField.setBounds(INPUT_START_X, 640, INPUT_WIDTH, INPUT_HEIGHT);
+		indicatifRegionalDomicileLabel.setBounds(20, 690, LABEL_WIDTH, INPUT_HEIGHT);
+		indicatifRegionalDomicileField.setBounds(INPUT_START_X, 690, INPUT_WIDTH, INPUT_HEIGHT);
+		numeroTelephoneDomicileLabel.setBounds(20, 740, LABEL_WIDTH, INPUT_HEIGHT);
+		numeroTelephoneDomicileField.setBounds(INPUT_START_X, 740, INPUT_WIDTH, INPUT_HEIGHT);
+		
+		telephoneBureauLabel.setBounds(20, 790, INPUT_WIDTH, INPUT_HEIGHT);	
+		telephoneBureauLabel.setFont(new Font(null, Font.BOLD, 25));
+		codePaysBureauLabel.setBounds(20, 840, LABEL_WIDTH, INPUT_HEIGHT);
+		codePaysBureauField.setBounds(INPUT_START_X, 840, INPUT_WIDTH, INPUT_HEIGHT);
+		indicatifRegionalBureauLabel.setBounds(20, 890, LABEL_WIDTH, INPUT_HEIGHT);
+		indicatifRegionalBureauField.setBounds(INPUT_START_X, 890, INPUT_WIDTH, INPUT_HEIGHT);
+		numeroTelephoneBureauLabel.setBounds(20, 940, LABEL_WIDTH, INPUT_HEIGHT);
+		numeroTelephoneBureauField.setBounds(INPUT_START_X, 940, INPUT_WIDTH, INPUT_HEIGHT);
+//		codePaysBureauLabel.setBounds(20, 540, LABEL_WIDTH, INPUT_HEIGHT);
+//		codePaysBu
 		
 		
 		frame.add(inscriptionPourLabel);
@@ -146,10 +165,24 @@ public class AdmissionFrame implements ActionListener {
 		frame.add(codePostalField);
 		frame.add(paysLabel);
 		frame.add(paysField);
+		frame.add(telephoneDomicileLabel);
+		frame.add(codePaysDomicileLabel);
+		frame.add(codePaysDomicileField);
+		frame.add(indicatifRegionalDomicileLabel);
+		frame.add(indicatifRegionalDomicileField);
+		frame.add(numeroTelephoneDomicileLabel);
+		frame.add(numeroTelephoneDomicileField);
+		frame.add(telephoneBureauLabel);
+		frame.add(codePaysBureauLabel);
+		frame.add(codePaysBureauField);
+		frame.add(indicatifRegionalBureauLabel);
+		frame.add(indicatifRegionalBureauField);
+		frame.add(numeroTelephoneBureauLabel);
+		frame.add(numeroTelephoneBureauField);
 		
 		frame.setLayout(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(700, 800);
+		frame.setSize(700, 1200);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
