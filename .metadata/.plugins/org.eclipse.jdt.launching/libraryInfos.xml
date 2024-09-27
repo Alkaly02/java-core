@@ -28,4 +28,23 @@
     <libraryInfo home="/usr/lib/jvm/java-21-openjdk-amd64" version="21.0.4"/>
     <libraryInfo home="/var/lib/snapd/snap/eclipse/95/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_21.0.3.v20240426-1530/jre" version="21.0.3"/>
     <libraryInfo home="/snap/eclipse/95/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_21.0.3.v20240426-1530/jre" version="21.0.3"/>
+    <libraryInfo home="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64" version="1.8.0_422-422">
+        <bootpath>
+            <entry path="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64/jre/lib/resources.jar"/>
+            <entry path="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64/jre/lib/rt.jar"/>
+            <entry path="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64/jre/lib/sunrsasign.jar"/>
+            <entry path="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64/jre/lib/jsse.jar"/>
+            <entry path="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64/jre/lib/jce.jar"/>
+            <entry path="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64/jre/lib/charsets.jar"/>
+            <entry path="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64/jre/lib/jfr.jar"/>
+            <entry path="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64/jre/classes"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64/jre/lib/ext"/>
+            <entry path="/usr/java/packages/lib/ext"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="/usr/lib/jvm/openlogic-openjdk-8-hotspot-amd64/jre/lib/endorsed"/>
+        </endorsedDirs>
+    </libraryInfo>
 </libraryInfos>
