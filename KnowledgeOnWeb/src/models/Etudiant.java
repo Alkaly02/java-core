@@ -4,7 +4,29 @@ import java.util.Date;
 
 enum PHONEYPE {Domicile, Bureau};
 enum SEXE {M, F};
-enum STATUTCITOYEN {};
+enum STATUTCITOYEN {
+    CITOYEN_US("Citoyen U.S"),
+    RESIDENT_PERMANENT("Resident permanent"),
+    PAS_CITOYEN_US("N'est pas citoyen U.S"),
+    REFUS_ETAT("Refus de l'Etat");
+
+    private String displayName;
+
+    // Constructeur pour l'énumération
+    STATUTCITOYEN(String displayName) {
+        this.displayName = displayName;
+    }
+
+    // Méthode pour obtenir le nom affiché
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public String toString() {
+        return displayName;
+    }
+};
 
 class Telephone{
 	private String codePays, indicatifRegional, numeroTelephone;
