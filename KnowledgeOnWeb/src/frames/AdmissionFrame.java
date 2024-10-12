@@ -5,37 +5,30 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 
-enum STATUTCITOYEN {
+enum StatutCitoyennete {
     CITOYEN_US("Citoyen U.S"),
     RESIDENT_PERMANENT("Resident permanent"),
     PAS_CITOYEN_US("N'est pas citoyen U.S"),
     REFUS_ETAT("Refus de l'Etat");
 
-    private String displayName;
+    private final String displayName;
 
-    // Constructeur pour l'énumération
-    STATUTCITOYEN(String displayName) {
+    StatutCitoyennete(String displayName) {
         this.displayName = displayName;
-    }
-
-    // Méthode pour obtenir le nom affiché
-    public String getDisplayName() {
-        return displayName;
     }
 
     @Override
     public String toString() {
-        return displayName;
+        return displayName; // Cela permet d'afficher les noms dans le JComboBox
     }
-};
+}
 
 public class AdmissionFrame implements ActionListener {
     // Constantes pour la taille des champs et labels
@@ -169,8 +162,11 @@ public class AdmissionFrame implements ActionListener {
         JTextField anneeTextField = new JTextField();
         anneeTextField.setBounds(400, 1140, 60, INPUT_HEIGHT);
         
-        JComboBox<STATUTCITOYEN> citoyenneteComboBox = new JComboBox<>(STATUTCITOYEN.values());
-        citoyenneteComboBox.setBounds(20, 1190, INPUT_WIDTH, INPUT_HEIGHT);
+        JLabel citoyenneteLabel = new JLabel("Citonnete");
+        citoyenneteLabel.setBounds(20, 1190, INPUT_WIDTH, INPUT_HEIGHT);
+        JComboBox<StatutCitoyennete> citoyenneteComboBox = new JComboBox<>(StatutCitoyennete.values());
+        citoyenneteComboBox.setBounds(20, 1190, INPUT_WIDTH, INPUT_HEIGHT + 100);
+        citoyenneteComboBox.setPreferredSize(new Dimension(200, 40));
 
 
         // Ajouter tous les composants au panneau (panel)
@@ -220,6 +216,7 @@ public class AdmissionFrame implements ActionListener {
         panel.add(jourTextField);
         panel.add(anneeLabel);
         panel.add(anneeTextField);
+        panel.add(citoyenneteLabel);
         panel.add(citoyenneteComboBox);
         
 
