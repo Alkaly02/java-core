@@ -15,6 +15,7 @@ public class QualificationFrame implements ActionListener {
     JPanel panel = new JPanel();
     JPanel leftPanel = new JPanel();  // Partie gauche
     JPanel rightPanel = new JPanel(); // Partie droite
+    JButton sendButton = new JButton("Envoyer");
 
     public QualificationFrame() {
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
@@ -38,6 +39,12 @@ public class QualificationFrame implements ActionListener {
         panel.add(leftPanel);
         panel.add(Box.createRigidArea(new Dimension(20, 0))); // Espacement entre les deux parties
         panel.add(rightPanel);
+
+        JPanel buttonPanelRow = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        sendButton.setPreferredSize(new Dimension(150, 40));
+        sendButton.addActionListener(this);
+        buttonPanelRow.add(sendButton);
+        leftPanel.add(buttonPanelRow);
 
         JScrollPane scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);

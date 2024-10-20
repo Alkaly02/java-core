@@ -61,7 +61,7 @@ public class LoginFrame implements ActionListener {
 //			fermer le frame de connexion
 			frame.dispose();
 //			ouvrir le frame d'admission
-			new AdmissionFrame();
+			new HomeFrame();
 		}
 	}	
 }
