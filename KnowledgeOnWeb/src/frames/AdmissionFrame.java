@@ -5,6 +5,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 enum StatutCitoyennete {
     CITOYEN_US("Citoyen U.S"),
@@ -31,6 +32,8 @@ public class AdmissionFrame implements ActionListener {
 
     JFrame frame = new JFrame("Formulaire d'inscription");
     JPanel panel = new JPanel();
+    JButton cancelButton = new JButton("Annuler");
+    JButton continuButton = new JButton("Continuer");
 
     public AdmissionFrame() {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -84,6 +87,12 @@ public class AdmissionFrame implements ActionListener {
         addMoisJourAnneeRow(panel);
 
         addLabeledComponent(panel, "Citoyenneté :", createCitoyenneteComboBox());
+        
+        // Ajout des buttons
+        ArrayList<JButton> buttons = new ArrayList<JButton>();
+        buttons.add(cancelButton);
+        buttons.add(continuButton);
+        addButtonsRow(panel, buttons);
 
         JScrollPane scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -172,6 +181,17 @@ public class AdmissionFrame implements ActionListener {
         panel.add(rowPanel);
     }
 
+    private void addButtonsRow(JPanel panel, ArrayList<JButton> buttons) {
+        addSectionSeparator(panel, null);
+        JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        for (JButton button : buttons) {
+            button.setPreferredSize(new Dimension(150, 40));
+            button.addActionListener(this);
+            rowPanel.add(button);
+        }
+        panel.add(rowPanel);
+    }
+
     private void addSectionSeparator(JPanel panel, String title) {
         panel.add(Box.createRigidArea(new Dimension(0, 20)));
         JLabel sectionLabel = new JLabel(title);
@@ -183,9 +203,12 @@ public class AdmissionFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    }
-
-    public static void main(String[] args) {
-        new AdmissionFrame();
+        System.out.println("actionPerformed");
+        if (e.getSource() == cancelButton) {
+        }
+        if (e.getSource() == continuButton) {
+            frame.dispose();
+            new QualificationFrame();
+        }
     }
 }

@@ -63,8 +63,4 @@ public class QualificationFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
     }
-
-    public static void main(String[] args) {
-        new QualificationFrame();
-    }
 }
