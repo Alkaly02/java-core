@@ -1,16 +1,10 @@
 package frames;
 
-import java.awt.Dimension;
-import java.awt.Font;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.*;
 
 enum StatutCitoyennete {
     CITOYEN_US("Citoyen U.S"),
@@ -26,213 +20,172 @@ enum StatutCitoyennete {
 
     @Override
     public String toString() {
-        return displayName; // Cela permet d'afficher les noms dans le JComboBox
+        return displayName;
     }
 }
 
 public class AdmissionFrame implements ActionListener {
-    // Constantes pour la taille des champs et labels
+
     private final int INPUT_HEIGHT = 40;
-    private final int INPUT_START_X = 280;
     private final int INPUT_WIDTH = 400;
-    private final int LABEL_WIDTH = 300;
 
     JFrame frame = new JFrame("Formulaire d'inscription");
     JPanel panel = new JPanel();
-    JScrollPane scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
     public AdmissionFrame() {
-        // Définir le layout du panel en null pour utiliser des positions absolues
-        panel.setLayout(null);
-        
-        // Définir la taille préférée du panel pour permettre le scroll
-        panel.setPreferredSize(new Dimension(700, 1200));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-        // Création des composants
-        JLabel inscriptionPourLabel = new JLabel("Inscription pour");
-        inscriptionPourLabel.setBounds(20, 20, LABEL_WIDTH, INPUT_HEIGHT);
-        inscriptionPourLabel.setFont(new Font(null, Font.BOLD, 25));
-        
-        JLabel programmeNiveauEtudeLabel = new JLabel("Programme Niveau d'Etude");
-        programmeNiveauEtudeLabel.setBounds(20, 70, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField programmeNiveauEtudeField = new JTextField();
-        programmeNiveauEtudeField.setBounds(INPUT_START_X, 70, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel ecoleLabel = new JLabel("Ecole");
-        ecoleLabel.setBounds(20, 120, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField ecoleField = new JTextField();
-        ecoleField.setBounds(INPUT_START_X, 120, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel detailsPersonnel = new JLabel("Details du personnel");
-        detailsPersonnel.setBounds(20, 180, INPUT_WIDTH, INPUT_HEIGHT);
-        detailsPersonnel.setFont(new Font(null, Font.BOLD, 25));
-        
-        JLabel nomLabel = new JLabel("Nom");
-        nomLabel.setBounds(20, 220, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField nomField = new JTextField();
-        nomField.setBounds(INPUT_START_X, 220, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel prenomLabel = new JLabel("Prenom");
-        prenomLabel.setBounds(20, 270, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField prenomField = new JTextField();
-        prenomField.setBounds(INPUT_START_X, 270, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel adresseLabel = new JLabel("Adresse");
-        adresseLabel.setBounds(20, 320, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField adresseField = new JTextField();
-        adresseField.setBounds(INPUT_START_X, 320, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel citeLabel = new JLabel("Cite");
-        citeLabel.setBounds(20, 370, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField citeField = new JTextField();
-        citeField.setBounds(INPUT_START_X, 370, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel etatLabel = new JLabel("Etat");
-        etatLabel.setBounds(20, 420, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField etatField = new JTextField();
-        etatField.setBounds(INPUT_START_X, 420, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel codePostalLabel = new JLabel("Code postal");
-        codePostalLabel.setBounds(20, 470, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField codePostalField = new JTextField();
-        codePostalField.setBounds(INPUT_START_X, 470, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel paysLabel = new JLabel("Pays");
-        paysLabel.setBounds(20, 520, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField paysField = new JTextField();
-        paysField.setBounds(INPUT_START_X, 520, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel telephoneDomicileLabel = new JLabel("Telephone(domicile)");
-        telephoneDomicileLabel.setBounds(20, 580, INPUT_WIDTH, INPUT_HEIGHT);
-        telephoneDomicileLabel.setFont(new Font(null, Font.BOLD, 25));
-        JLabel codePaysDomicileLabel = new JLabel("Code pays");
-        codePaysDomicileLabel.setBounds(20, 640, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField codePaysDomicileField = new JTextField();
-        codePaysDomicileField.setBounds(INPUT_START_X, 640, INPUT_WIDTH, INPUT_HEIGHT);
-        JLabel indicatifRegionalDomicileLabel = new JLabel("Indicatif regional");
-        indicatifRegionalDomicileLabel.setBounds(20, 690, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField indicatifRegionalDomicileField = new JTextField();
-        indicatifRegionalDomicileField.setBounds(INPUT_START_X, 690, INPUT_WIDTH, INPUT_HEIGHT);
-        JLabel numeroTelephoneDomicileLabel = new JLabel("Numero telephone");
-        numeroTelephoneDomicileLabel.setBounds(20, 740, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField numeroTelephoneDomicileField = new JTextField();
-        numeroTelephoneDomicileField.setBounds(INPUT_START_X, 740, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel telephoneBureauLabel = new JLabel("Telephone(Bureau)");
-        telephoneBureauLabel.setBounds(20, 790, INPUT_WIDTH, INPUT_HEIGHT);
-        telephoneBureauLabel.setFont(new Font(null, Font.BOLD, 25));
-        JLabel codePaysBureauLabel = new JLabel("Code pays");
-        codePaysBureauLabel.setBounds(20, 840, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField codePaysBureauField = new JTextField();
-        codePaysBureauField.setBounds(INPUT_START_X, 840, INPUT_WIDTH, INPUT_HEIGHT);
-        JLabel indicatifRegionalBureauLabel = new JLabel("Indicatif regional");
-        indicatifRegionalBureauLabel.setBounds(20, 890, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField indicatifRegionalBureauField = new JTextField();
-        indicatifRegionalBureauField.setBounds(INPUT_START_X, 890, INPUT_WIDTH, INPUT_HEIGHT);
-        JLabel numeroTelephoneBureauLabel = new JLabel("Numero telephone");
-        numeroTelephoneBureauLabel.setBounds(20, 940, LABEL_WIDTH, INPUT_HEIGHT);
-        JTextField numeroTelephoneBureauField = new JTextField();
-        numeroTelephoneBureauField.setBounds(INPUT_START_X, 940, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel emailLabel = new JLabel("Adresse email");
-        emailLabel.setBounds(20, 990, INPUT_WIDTH, INPUT_HEIGHT);
-        JTextField emailTextField = new JTextField();
-        emailTextField.setBounds(INPUT_START_X, 990, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel sexeLabel = new JLabel("Sexe");
-        sexeLabel.setBounds(20, 1040, INPUT_WIDTH, INPUT_HEIGHT);
-        JRadioButton maleButton = new JRadioButton("Masculin");
-        maleButton.setBounds(INPUT_START_X, 1040, 100, INPUT_HEIGHT);
-        JRadioButton femaleButton = new JRadioButton("Féminin");
-        femaleButton.setBounds(INPUT_START_X + 100, 1040, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        JLabel dateNaissanceLabel = new JLabel("Date de naissance");
-        dateNaissanceLabel.setBounds(20, 1090, INPUT_WIDTH, INPUT_HEIGHT);
-        dateNaissanceLabel.setFont(new Font(null, Font.BOLD, 25));
-        JLabel moisLabel = new JLabel("Mois");
-        moisLabel.setBounds(20, 1140, INPUT_WIDTH, INPUT_HEIGHT);
-        JTextField moisTextField = new JTextField();
-        moisTextField.setBounds(60, 1140, 60, INPUT_HEIGHT);
-        JLabel jourLabel = new JLabel("Jour");
-        jourLabel.setBounds(200, 1140, INPUT_WIDTH, INPUT_HEIGHT);
-        JTextField jourTextField = new JTextField();
-        jourTextField.setBounds(250, 1140, 60, INPUT_HEIGHT);
-        JLabel anneeLabel = new JLabel("Annee");
-        anneeLabel.setBounds(350, 1140, INPUT_WIDTH, INPUT_HEIGHT);
-        JTextField anneeTextField = new JTextField();
-        anneeTextField.setBounds(400, 1140, 60, INPUT_HEIGHT);
-        
-        JLabel citoyenneteLabel = new JLabel("Citonnete");
-        citoyenneteLabel.setBounds(20, 1190, INPUT_WIDTH, INPUT_HEIGHT);
-        JComboBox<StatutCitoyennete> citoyenneteComboBox = new JComboBox<>(StatutCitoyennete.values());
-        citoyenneteComboBox.setBounds(20, 1190, INPUT_WIDTH, INPUT_HEIGHT + 100);
-        citoyenneteComboBox.setPreferredSize(new Dimension(200, 40));
+        addSectionSeparator(panel, "Formulaire d'inscription");
 
-
-        // Ajouter tous les composants au panneau (panel)
-        panel.add(inscriptionPourLabel);
-        panel.add(programmeNiveauEtudeLabel);
-        panel.add(programmeNiveauEtudeField);
-        panel.add(ecoleLabel);
-        panel.add(ecoleField);
-        panel.add(detailsPersonnel);
-        panel.add(nomLabel);
-        panel.add(nomField);
-        panel.add(prenomLabel);
-        panel.add(prenomField);
-        panel.add(adresseLabel);
-        panel.add(adresseField);
-        panel.add(citeLabel);
-        panel.add(citeField);
-        panel.add(etatLabel);
-        panel.add(etatField);
-        panel.add(codePostalLabel);
-        panel.add(codePostalField);
-        panel.add(paysLabel);
-        panel.add(paysField);
-        panel.add(telephoneDomicileLabel);
-        panel.add(codePaysDomicileLabel);
-        panel.add(codePaysDomicileField);
-        panel.add(indicatifRegionalDomicileLabel);
-        panel.add(indicatifRegionalDomicileField);
-        panel.add(numeroTelephoneDomicileLabel);
-        panel.add(numeroTelephoneDomicileField);
-        panel.add(telephoneBureauLabel);
-        panel.add(codePaysBureauLabel);
-        panel.add(codePaysBureauField);
-        panel.add(indicatifRegionalBureauLabel);
-        panel.add(indicatifRegionalBureauField);
-        panel.add(numeroTelephoneBureauLabel);
-        panel.add(numeroTelephoneBureauField);
-        panel.add(emailLabel);
-        panel.add(emailTextField);
-        panel.add(sexeLabel);
-        panel.add(maleButton);
-        panel.add(femaleButton);
-        panel.add(dateNaissanceLabel);
-        panel.add(moisLabel);
-        panel.add(moisTextField);
-        panel.add(jourLabel);
-        panel.add(jourTextField);
-        panel.add(anneeLabel);
-        panel.add(anneeTextField);
-        panel.add(citoyenneteLabel);
-        panel.add(citoyenneteComboBox);
+        // Remplacer "Inscription pour" par un JComboBox
+        addLabeledComboBox(panel, "Inscription pour :", new String[]{"Deuxième cycle", "Troisième cycle"}, INPUT_WIDTH, INPUT_HEIGHT);
         
+        // Ajouter le champ Programme Niveau d'Étude (JComboBox)
+        addLabeledComboBox(panel, "Programme Niveau d'Étude :", 
+            new String[]{
+                "Aéronautique-Astronautique", "Sciences de la terre", "Physique appliquée",
+                "Biochimie", "Éducation", "BioSciences", "Humanités et Sciences",
+                "Ingénierie et Science appliquée", "Architecture", "Droit",
+                "École d'infirmerie", "Journalisme"
+            }, INPUT_WIDTH, INPUT_HEIGHT);
 
-        // Ajouter le JScrollPane au cadre (frame)
+        addLabeledTextField(panel, "Ecole :", INPUT_WIDTH, INPUT_HEIGHT);
+
+        addSectionSeparator(panel, "Details du personnel");
+
+        addLabeledTextField(panel, "Nom :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Prenom :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Adresse :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Cité :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "État :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Code postal :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Pays :", INPUT_WIDTH, INPUT_HEIGHT);
+
+        addSectionSeparator(panel, "Téléphone (Domicile)");
+
+        addLabeledTextField(panel, "Code pays :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Indicatif régional :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Numéro de téléphone :", INPUT_WIDTH, INPUT_HEIGHT);
+
+        addSectionSeparator(panel, "Téléphone (Bureau)");
+
+        addLabeledTextField(panel, "Code pays :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Indicatif régional :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Numéro de téléphone :", INPUT_WIDTH, INPUT_HEIGHT);
+
+        addLabeledTextField(panel, "Adresse email :", INPUT_WIDTH, INPUT_HEIGHT);
+
+        addLabeledComponent(panel, "Sexe :", createSexePanel());
+
+        addSectionSeparator(panel, "Date de naissance");
+
+        // Ajouter les champs Mois, Jour, et Année sur la même ligne
+        addMoisJourAnneeRow(panel);
+
+        addLabeledComponent(panel, "Citoyenneté :", createCitoyenneteComboBox());
+
+        JScrollPane scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         frame.add(scrollPane);
 
-        // Configurer le cadre
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(700, 900);
+        frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    private JPanel createSexePanel() {
+        JPanel sexePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JRadioButton maleButton = new JRadioButton("Masculin");
+        JRadioButton femaleButton = new JRadioButton("Féminin");
+        sexePanel.add(maleButton);
+        sexePanel.add(femaleButton);
+        return sexePanel;
+    }
+
+    private JComboBox<StatutCitoyennete> createCitoyenneteComboBox() {
+        JComboBox<StatutCitoyennete> citoyenneteComboBox = new JComboBox<>(StatutCitoyennete.values());
+        citoyenneteComboBox.setPreferredSize(new Dimension(INPUT_WIDTH, INPUT_HEIGHT));
+        citoyenneteComboBox.setMaximumSize(new Dimension(INPUT_WIDTH, INPUT_HEIGHT));
+        return citoyenneteComboBox;
+    }
+
+    private void addLabeledTextField(JPanel panel, String labelText, int width, int height) {
+        JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel label = new JLabel(labelText);
+        label.setPreferredSize(new Dimension(150, height));
+        JTextField textField = new JTextField();
+        textField.setPreferredSize(new Dimension(width, height));
+        rowPanel.add(label);
+        rowPanel.add(textField);
+        panel.add(rowPanel);
+    }
+
+    private void addLabeledComponent(JPanel panel, String labelText, JComponent component) {
+        JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel label = new JLabel(labelText);
+        label.setPreferredSize(new Dimension(150, INPUT_HEIGHT));
+        rowPanel.add(label);
+        rowPanel.add(component);
+        panel.add(rowPanel);
+    }
+
+    // Nouvelle méthode pour ajouter un JComboBox
+    private void addLabeledComboBox(JPanel panel, String labelText, String[] options, int width, int height) {
+        JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel label = new JLabel(labelText);
+        label.setPreferredSize(new Dimension(150, height));
+        JComboBox<String> comboBox = new JComboBox<>(options);
+        comboBox.setPreferredSize(new Dimension(width, height));
+        rowPanel.add(label);
+        rowPanel.add(comboBox);
+        panel.add(rowPanel);
+    }
+
+    // Méthode pour ajouter Mois, Jour et Année sur la même ligne
+    private void addMoisJourAnneeRow(JPanel panel) {
+        JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        JLabel moisLabel = new JLabel("Mois :");
+        moisLabel.setPreferredSize(new Dimension(50, INPUT_HEIGHT));
+        JTextField moisField = new JTextField();
+        moisField.setPreferredSize(new Dimension(60, INPUT_HEIGHT));
+
+        JLabel jourLabel = new JLabel("Jour :");
+        jourLabel.setPreferredSize(new Dimension(50, INPUT_HEIGHT));
+        JTextField jourField = new JTextField();
+        jourField.setPreferredSize(new Dimension(60, INPUT_HEIGHT));
+
+        JLabel anneeLabel = new JLabel("Année :");
+        anneeLabel.setPreferredSize(new Dimension(50, INPUT_HEIGHT));
+        JTextField anneeField = new JTextField();
+        anneeField.setPreferredSize(new Dimension(80, INPUT_HEIGHT));
+
+        rowPanel.add(moisLabel);
+        rowPanel.add(moisField);
+        rowPanel.add(jourLabel);
+        rowPanel.add(jourField);
+        rowPanel.add(anneeLabel);
+        rowPanel.add(anneeField);
+
+        panel.add(rowPanel);
+    }
+
+    private void addSectionSeparator(JPanel panel, String title) {
+        panel.add(Box.createRigidArea(new Dimension(0, 20)));
+        JLabel sectionLabel = new JLabel(title);
+        sectionLabel.setFont(new Font(null, Font.BOLD, 25));
+        sectionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.add(sectionLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
+
+    public static void main(String[] args) {
+        new AdmissionFrame();
+    }
 }
