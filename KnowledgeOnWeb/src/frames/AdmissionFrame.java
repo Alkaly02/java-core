@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 enum StatutCitoyennete {
     CITOYEN_US("Citoyen U.S"),
@@ -35,61 +37,65 @@ public class AdmissionFrame implements ActionListener {
     JButton cancelButton = new JButton("Annuler");
     JButton continuButton = new JButton("Continuer");
 
+    // Map to store form data
+    private Map<String, String> admissionData = new HashMap<>();
+
+    // TextFields and ComboBoxes for retrieving data
+    private Map<String, JTextField> textFields = new HashMap<>();
+    private Map<String, JComboBox<String>> comboBoxes = new HashMap<>();
+    private JComboBox<StatutCitoyennete> citoyenneteComboBox;
+
     public AdmissionFrame() {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(new EmptyBorder(20, 20, 20, 20));
 
         addSectionSeparator(panel, "Formulaire d'inscription");
 
-        // Remplacer "Inscription pour" par un JComboBox
-        addLabeledComboBox(panel, "Inscription pour :", new String[]{"Deuxième cycle", "Troisième cycle"}, INPUT_WIDTH, INPUT_HEIGHT);
-        
-        // Ajouter le champ Programme Niveau d'Étude (JComboBox)
-        addLabeledComboBox(panel, "Programme Niveau d'Étude :", 
-            new String[]{
-                "Aéronautique-Astronautique", "Sciences de la terre", "Physique appliquée",
-                "Biochimie", "Éducation", "BioSciences", "Humanités et Sciences",
-                "Ingénierie et Science appliquée", "Architecture", "Droit",
-                "École d'infirmerie", "Journalisme"
-            }, INPUT_WIDTH, INPUT_HEIGHT);
+        // JComboBox for "Inscription pour"
+        addLabeledComboBox(panel, "Inscription pour :", new String[] { "Deuxième cycle", "Troisième cycle" },
+                "inscription");
 
-        addLabeledTextField(panel, "Ecole :", INPUT_WIDTH, INPUT_HEIGHT);
+        // JComboBox for Programme Niveau d'Étude
+        addLabeledComboBox(panel, "Programme Niveau d'Étude :",
+                new String[] {
+                        "Aéronautique-Astronautique", "Sciences de la terre", "Physique appliquée",
+                        "Biochimie", "Éducation", "BioSciences", "Humanités et Sciences",
+                        "Ingénierie et Science appliquée", "Architecture", "Droit",
+                        "École d'infirmerie", "Journalisme"
+                }, "programme");
 
-        addSectionSeparator(panel, "Details du personnel");
-
-        addLabeledTextField(panel, "Nom :", INPUT_WIDTH, INPUT_HEIGHT);
-        addLabeledTextField(panel, "Prenom :", INPUT_WIDTH, INPUT_HEIGHT);
-        addLabeledTextField(panel, "Adresse :", INPUT_WIDTH, INPUT_HEIGHT);
-        addLabeledTextField(panel, "Cité :", INPUT_WIDTH, INPUT_HEIGHT);
-        addLabeledTextField(panel, "État :", INPUT_WIDTH, INPUT_HEIGHT);
-        addLabeledTextField(panel, "Code postal :", INPUT_WIDTH, INPUT_HEIGHT);
-        addLabeledTextField(panel, "Pays :", INPUT_WIDTH, INPUT_HEIGHT);
+        // TextFields for various personal details
+        addLabeledTextField(panel, "Ecole :", "ecole");
+        addSectionSeparator(panel, "Détails personnels");
+        addLabeledTextField(panel, "Nom :", "nom");
+        addLabeledTextField(panel, "Prenom :", "prenom");
+        addLabeledTextField(panel, "Adresse :", "adresse");
+        addLabeledTextField(panel, "Cité :", "cite");
+        addLabeledTextField(panel, "État :", "etat");
+        addLabeledTextField(panel, "Code postal :", "codePostal");
+        addLabeledTextField(panel, "Pays :", "pays");
 
         addSectionSeparator(panel, "Téléphone (Domicile)");
-
-        addLabeledTextField(panel, "Code pays :", INPUT_WIDTH, INPUT_HEIGHT);
-        addLabeledTextField(panel, "Indicatif régional :", INPUT_WIDTH, INPUT_HEIGHT);
-        addLabeledTextField(panel, "Numéro de téléphone :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Code pays :", "codePaysDomicile");
+        addLabeledTextField(panel, "Indicatif régional :", "indicatifDomicile");
+        addLabeledTextField(panel, "Numéro de téléphone :", "numeroDomicile");
 
         addSectionSeparator(panel, "Téléphone (Bureau)");
+        addLabeledTextField(panel, "Code pays :", "codePaysBureau");
+        addLabeledTextField(panel, "Indicatif régional :", "indicatifBureau");
+        addLabeledTextField(panel, "Numéro de téléphone :", "numeroBureau");
 
-        addLabeledTextField(panel, "Code pays :", INPUT_WIDTH, INPUT_HEIGHT);
-        addLabeledTextField(panel, "Indicatif régional :", INPUT_WIDTH, INPUT_HEIGHT);
-        addLabeledTextField(panel, "Numéro de téléphone :", INPUT_WIDTH, INPUT_HEIGHT);
-
-        addLabeledTextField(panel, "Adresse email :", INPUT_WIDTH, INPUT_HEIGHT);
+        addLabeledTextField(panel, "Adresse email :", "email");
 
         addLabeledComponent(panel, "Sexe :", createSexePanel());
 
         addSectionSeparator(panel, "Date de naissance");
-
-        // Ajouter les champs Mois, Jour, et Année sur la même ligne
         addMoisJourAnneeRow(panel);
 
         addLabeledComponent(panel, "Citoyenneté :", createCitoyenneteComboBox());
-        
-        // Ajout des buttons
-        ArrayList<JButton> buttons = new ArrayList<JButton>();
+
+        // Buttons for actions
+        ArrayList<JButton> buttons = new ArrayList<>();
         buttons.add(cancelButton);
         buttons.add(continuButton);
         addButtonsRow(panel, buttons);
@@ -104,6 +110,15 @@ public class AdmissionFrame implements ActionListener {
         frame.setVisible(true);
     }
 
+    private void addLabeledComponent(JPanel panel, String labelText, JComponent component) {
+        JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel label = new JLabel(labelText);
+        label.setPreferredSize(new Dimension(150, INPUT_HEIGHT));
+        rowPanel.add(label);
+        rowPanel.add(component);
+        panel.add(rowPanel);
+    }
+
     private JPanel createSexePanel() {
         JPanel sexePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JRadioButton maleButton = new JRadioButton("Masculin");
@@ -114,45 +129,36 @@ public class AdmissionFrame implements ActionListener {
     }
 
     private JComboBox<StatutCitoyennete> createCitoyenneteComboBox() {
-        JComboBox<StatutCitoyennete> citoyenneteComboBox = new JComboBox<>(StatutCitoyennete.values());
+        citoyenneteComboBox = new JComboBox<>(StatutCitoyennete.values());
         citoyenneteComboBox.setPreferredSize(new Dimension(INPUT_WIDTH, INPUT_HEIGHT));
         citoyenneteComboBox.setMaximumSize(new Dimension(INPUT_WIDTH, INPUT_HEIGHT));
         return citoyenneteComboBox;
     }
 
-    private void addLabeledTextField(JPanel panel, String labelText, int width, int height) {
-        JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JLabel label = new JLabel(labelText);
-        label.setPreferredSize(new Dimension(150, height));
-        JTextField textField = new JTextField();
-        textField.setPreferredSize(new Dimension(width, height));
-        rowPanel.add(label);
-        rowPanel.add(textField);
-        panel.add(rowPanel);
-    }
-
-    private void addLabeledComponent(JPanel panel, String labelText, JComponent component) {
+    private void addLabeledTextField(JPanel panel, String labelText, String fieldKey) {
         JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel label = new JLabel(labelText);
         label.setPreferredSize(new Dimension(150, INPUT_HEIGHT));
+        JTextField textField = new JTextField();
+        textField.setPreferredSize(new Dimension(INPUT_WIDTH, INPUT_HEIGHT));
         rowPanel.add(label);
-        rowPanel.add(component);
+        rowPanel.add(textField);
         panel.add(rowPanel);
+        textFields.put(fieldKey, textField); // Save reference to the text field
     }
 
-    // Nouvelle méthode pour ajouter un JComboBox
-    private void addLabeledComboBox(JPanel panel, String labelText, String[] options, int width, int height) {
+    private void addLabeledComboBox(JPanel panel, String labelText, String[] options, String fieldKey) {
         JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel label = new JLabel(labelText);
-        label.setPreferredSize(new Dimension(150, height));
+        label.setPreferredSize(new Dimension(150, INPUT_HEIGHT));
         JComboBox<String> comboBox = new JComboBox<>(options);
-        comboBox.setPreferredSize(new Dimension(width, height));
+        comboBox.setPreferredSize(new Dimension(INPUT_WIDTH, INPUT_HEIGHT));
         rowPanel.add(label);
         rowPanel.add(comboBox);
         panel.add(rowPanel);
+        comboBoxes.put(fieldKey, comboBox); // Save reference to the combo box
     }
 
-    // Méthode pour ajouter Mois, Jour et Année sur la même ligne
     private void addMoisJourAnneeRow(JPanel panel) {
         JPanel rowPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
@@ -179,6 +185,11 @@ public class AdmissionFrame implements ActionListener {
         rowPanel.add(anneeField);
 
         panel.add(rowPanel);
+
+        // Store date fields in textFields map
+        textFields.put("mois", moisField);
+        textFields.put("jour", jourField);
+        textFields.put("annee", anneeField);
     }
 
     private void addButtonsRow(JPanel panel, ArrayList<JButton> buttons) {
@@ -203,12 +214,55 @@ public class AdmissionFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("actionPerformed");
         if (e.getSource() == cancelButton) {
+            // Vider tous les inputs
+            for (JTextField textField : textFields.values()) {
+                textField.setText("");
+            }
         }
         if (e.getSource() == continuButton) {
-            frame.dispose();
-            new QualificationFrame();
+            // Recuperer les donnees des champs
+            boolean isValid = validateFields();
+            if (isValid) {
+                admissionData.clear();
+                // On stoque les donnees TextField sous format key:value grace au HashMap
+                for (Map.Entry<String, JTextField> entry : textFields.entrySet()) {
+                    admissionData.put(entry.getKey(), entry.getValue().getText());
+                }
+
+                // On stoque les donnees ComboBox sous format key:value grace au HashMap
+                for (Map.Entry<String, JComboBox<String>> entry : comboBoxes.entrySet()) {
+                    admissionData.put(entry.getKey(), entry.getValue().getSelectedItem().toString());
+                }
+
+                // Store citoyenneteComboBox value
+                admissionData.put("citoyennete", citoyenneteComboBox.getSelectedItem().toString());
+
+                System.out.println("Form data collected successfully:");
+                admissionData.forEach((key, value) -> System.out.println(key + ": " + value));
+
+                // Mette le code ici pour aller ves le frame admission
+            }
         }
+    }
+
+    // Fonction pour validations des champs
+    private boolean validateFields() {
+        StringBuilder errorMessage = new StringBuilder();
+
+        for (Map.Entry<String, JTextField> entry : textFields.entrySet()) {
+            String value = entry.getValue().getText();
+            if (value == null || value.trim().isEmpty()) {
+                errorMessage.append("Le champ ").append(entry.getKey()).append(" est obligatoire.\n");
+            }
+        }
+
+        if (errorMessage.length() > 0) {
+            JOptionPane.showMessageDialog(frame, errorMessage.toString(), "Erreur de validation",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
     }
 }
