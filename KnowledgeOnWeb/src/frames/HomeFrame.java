@@ -5,12 +5,20 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class HomeFrame {
 
     private JFrame frame;
     private JTable table;
     private DefaultTableModel tableModel;
+
+    Map<String, String> data = readDataFromFile("admissions.bat");
 
     public HomeFrame() {
         frame = new JFrame("Liste des admissions");
@@ -84,9 +92,20 @@ public class HomeFrame {
         JOptionPane.showMessageDialog(frame, admissionDetails, "Détails de l'admission", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    // Main pour lancer l'application
-    public static void main(String[] args) {
-        new HomeFrame();
+    private static Map<String, String> readDataFromFile(String fileName) {
+        Map<String, String> fileData = new HashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(new File(fileName)))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("=");
+                if (parts.length == 2) {
+                    fileData.put(parts[0].trim(), parts[1].trim());
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileData;
     }
 }
 
@@ -132,6 +151,6 @@ class ButtonEditor extends DefaultCellEditor {
 
     @Override
     public Object getCellEditorValue() {
-        return button.getText();
+      return button.getText();
     }
 }

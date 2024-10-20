@@ -238,10 +238,10 @@ public class AdmissionFrame implements ActionListener {
                 // Store citoyenneteComboBox value
                 admissionData.put("citoyennete", citoyenneteComboBox.getSelectedItem().toString());
 
-                System.out.println("Form data collected successfully:");
-                admissionData.forEach((key, value) -> System.out.println(key + ": " + value));
+                // admissionData.forEach((key, value) -> System.out.println(key + ": " + value));
 
                 // Mette le code ici pour aller ves le frame admission
+                new QualificationFrame(admissionData);
             }
         }
     }
