@@ -7,8 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,7 +39,7 @@ public class QualificationFrame implements ActionListener {
         // Partie gauche
         leftPanel.setLayout(new GridLayout(5, 2, 10, 10));
         addLabeledTextField(leftPanel, "Programme Niveau d'Étude");
-        addLabeledTextField(leftPanel, "Ecole :");
+        addLabeledTextField(leftPanel, "Ecole");
         addLabeledTextField(leftPanel, "Nombre maximal de points");
         addLabeledTextField(leftPanel, "Date de test");
         addLabeledTextField(leftPanel, "Point TOEFL");
@@ -126,11 +129,12 @@ public class QualificationFrame implements ActionListener {
 
     // Save all data into a file
     private void saveAllDataToFile(Map<String, String> allData) {
-        File file = new File("admission.bat");
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            for (Map.Entry<String, String> entry : allData.entrySet()) {
-                writer.write(entry.getKey() + "=" + entry.getValue());
-                writer.newLine();
+        // File file = new File("admission.dat");
+        ArrayList<Map<String, String>> data = new ArrayList<Map<String, String>>();
+        data.add(allData);
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("admission.dat"))) {
+            for (Map<String, String> mapLine : data) {
+                oos.writeObject(mapLine);
             }
             JOptionPane.showMessageDialog(frame, "Data saved successfully!", "Success",
                     JOptionPane.INFORMATION_MESSAGE);

@@ -5,12 +5,14 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.*;
 
 public class HomeFrame {
 
@@ -18,19 +20,25 @@ public class HomeFrame {
     private JTable table;
     private DefaultTableModel tableModel;
 
-    Map<String, String> data = readDataFromFile("admissions.bat");
+    ArrayList<Map<String, String>> data = readDataFromFile("admission.dat");
+
 
     public HomeFrame() {
         frame = new JFrame("Liste des admissions");
         frame.setLayout(new BorderLayout());
 
         // Créer le modèle de la table avec les colonnes spécifiées
-        String[] columnNames = {"ID", "Nom", "Programme", "Ecole", "Date de test", "Actions"};
+        String[] columnNames = { "Prenom", "Nom", "Adresse", "Numero domicile", "Email", "Inscription", "Actions"};
         tableModel = new DefaultTableModel(columnNames, 0);
 
         // Remplir la table avec des données factices (à remplacer par des données réelles)
-        addAdmissionRow(new Object[]{"1", "John Doe", "Physique appliquée", "Université A", "01/10/2024"});
-        addAdmissionRow(new Object[]{"2", "Jane Doe", "Informatique", "Université B", "02/11/2024"});
+        for (Map<String, String> row : data) {
+            System.out.println(row);
+            // prenom, nom, adresse, numeroDomicile, inscription, email
+            System.out.println(row.get("prenom"));
+            addAdmissionRow(new Object[]{ row.get("prenom"), row.get("nom"), row.get("adresse"), row.get("numeroDomicile"), row.get("email"), row.get("inscription")});
+        }
+        // addAdmissionRow(new Object[]{ "Jane Doe", "Informatique", "Université B", "02/11/2024"});
 
         // Créer la table
         table = new JTable(tableModel) {
@@ -71,7 +79,7 @@ public class HomeFrame {
 
     // Ajouter une nouvelle ligne d'admission
     private void addAdmissionRow(Object[] rowData) {
-        tableModel.addRow(new Object[]{rowData[0], rowData[1], rowData[2], rowData[3], rowData[4], "Voir détails"});
+        tableModel.addRow(new Object[]{rowData[0], rowData[1], rowData[2], rowData[3], rowData[4], rowData[5], "Voir détails"});
     }
 
     // Ajouter des boutons "Voir détails" dans la table
@@ -92,16 +100,23 @@ public class HomeFrame {
         JOptionPane.showMessageDialog(frame, admissionDetails, "Détails de l'admission", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private static Map<String, String> readDataFromFile(String fileName) {
-        Map<String, String> fileData = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(new File(fileName)))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split("=");
-                if (parts.length == 2) {
-                    fileData.put(parts[0].trim(), parts[1].trim());
-                }
-            }
+    private static ArrayList<Map<String, String>> readDataFromFile(String fileName) {
+        File file = new File(fileName);
+        if (!file.exists()) {
+            return new ArrayList<Map<String, String>>();
+        }
+        ArrayList<Map<String, String>> fileData = new ArrayList<Map<String, String>>();
+        Map<String, String> deserializedLine;
+        try (ObjectInputStream ios = new ObjectInputStream(new FileInputStream(file))) {
+            while(true) {
+    			try {
+    				deserializedLine = (Map<String, String>) ios.readObject();
+    				fileData.add(deserializedLine);
+    			}catch(ClassNotFoundException | EOFException ie) {
+    				System.out.println("Fin du fichier");
+    				break;
+    			}
+    		}
         } catch (IOException e) {
             e.printStackTrace();
         }
